@@ -84,7 +84,8 @@ public class CustomerConfig extends WebMvcConfigurationSupport{
 
     private Properties properties(){
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL92Dialect");
         properties.setProperty("hibernate.show_sql", "true");
         return properties;
     }
