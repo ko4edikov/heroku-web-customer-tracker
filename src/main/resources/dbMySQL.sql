@@ -20,3 +20,4 @@ INSERT INTO `customer` VALUES
   (4, 'Mary', 'Private', 'mary@gmail.com'),
   (5, 'Maxwell', 'Ivan', 'maxwell@gmail.com'),
   (6, 'Ivan', 'Durak', 'ivan@gmail.com');
+
