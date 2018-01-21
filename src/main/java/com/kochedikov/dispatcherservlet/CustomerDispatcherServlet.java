@@ -11,7 +11,7 @@ import javax.servlet.ServletRegistration;
 
 public class CustomerDispatcherServlet implements WebApplicationInitializer {
 
-    @Override
+
     public void onStartup(ServletContext servletCxt) {
 
         // Load Spring web application configuration

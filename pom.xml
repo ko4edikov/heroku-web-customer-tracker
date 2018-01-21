@@ -134,7 +134,7 @@
                                     <destFileName>webapp-runner.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
-                            <failOnMissingWebXml>false</failOnMissingWebXml>
+
                         </configuration>
                     </execution>
                 </executions>
