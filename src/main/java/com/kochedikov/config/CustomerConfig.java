@@ -15,6 +15,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 @Configuration
@@ -34,15 +36,32 @@ public class CustomerConfig extends WebMvcConfigurationSupport{
         return viewResolver;
     }
 
+//    @Bean
+//    public DataSource dataSource() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName(JDBC_DRIVER_CLASS);
+//        dataSource.setUrl(JDBC_URL);
+//        dataSource.setUsername(JDBC_USERNAME);
+//        dataSource.setPassword(JDBC_PASSWORD);
+//        return dataSource;
+//    }
+
     @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(JDBC_DRIVER_CLASS);
-        dataSource.setUrl(JDBC_URL);
-        dataSource.setUsername(JDBC_USERNAME);
-        dataSource.setPassword(JDBC_PASSWORD);
-        return dataSource;
+    public BasicDataSource dataSource() throws URISyntaxException {
+        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
+        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+
+        BasicDataSource basicDataSource = new BasicDataSource();
+        basicDataSource.setUrl(dbUrl);
+        basicDataSource.setUsername(username);
+        basicDataSource.setPassword(password);
+
+        return basicDataSource;
     }
+
 
 
     @Bean
