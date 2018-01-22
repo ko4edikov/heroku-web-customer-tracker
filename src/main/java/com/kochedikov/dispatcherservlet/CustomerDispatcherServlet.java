@@ -23,6 +23,6 @@ public class CustomerDispatcherServlet implements WebApplicationInitializer {
         DispatcherServlet servlet = new DispatcherServlet(ac);
         ServletRegistration.Dynamic registration = servletCxt.addServlet("dispatcher", servlet);
         registration.setLoadOnStartup(1);
-        registration.addMapping("/customer");
+        registration.addMapping("/");
     }
 }
